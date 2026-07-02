@@ -1,0 +1,31 @@
+# This file has been also pushed because there are no sensitive info in it.
+# Edit the two paths below before your first run. There are no passwords or sensitive info in this file.
+# Use single quotes around Windows paths so the backslashes are taken literally.
+
+[paths]
+# The folder that holds the .xlsx / .xlsm reports you want refreshed.
+reports_dir = 'D:\excel-reports'
+
+# The folder where logs are written (the tool creates it if it does not exist).
+log_dir = 'D:\excel-refresh-logs'
+
+
+[discovery]
+# Which files in the reports folder count as reports.
+include = ["*.xlsx", "*.xlsm"]
+# Optional patterns to skip, e.g. ["_archive*.xlsx", "*-template.xlsx"].
+exclude = []
+
+
+[refresh]
+# Time limit PER WORKBOOK, in seconds. If a workbook takes longer than this, its
+# Excel is force-closed and the run moves on to the next file. 1800 = 30 minutes.
+timeout_seconds = 1800
+
+
+[email]
+# Sends a run summary through the Outlook desktop app you are already signed in to.
+# No password is needed. Leave enabled = false to turn email off.
+enabled = false
+recipients = ["you@company.com"]
+send_on = "always"        # "always" = email every run; "failure" = only when something fails
