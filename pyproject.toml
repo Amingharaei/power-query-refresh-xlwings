@@ -1,0 +1,20 @@
+[project]
+name = "excel-refresh-orchestrator"
+version = "1.0.0"
+description = "Unattended, scheduled refresh of a folder of Excel (Power Query) reports. Windows-only."
+requires-python = ">=3.14"
+dependencies = [
+    # The only third-party dependency. On Windows it also installs pywin32, which
+    # drives Excel over COM and is used to send the Outlook summary email.
+    "xlwings>=0.36.6",
+]
+
+[tool.uv]
+# This is an application, not a library: build the environment with the dependency
+# but do not package/install the project itself, so you can run
+# `uv run python refresh_reports.py` straight from this folder.
+package = false
+
+# Prefer a Python you already have (3.14+); download an isolated copy ONLY if none is
+# found. uv never modifies your existing Python installations.
+python-preference = "system"
